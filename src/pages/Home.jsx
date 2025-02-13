@@ -2,41 +2,34 @@ import * as THREE from 'three'
 import { useEffect, useRef, useState, memo, Suspense } from 'react'
 import { Canvas, useFrame, useThree, extend } from '@react-three/fiber'
 import { Clouds, Cloud, Sky as SkyImpl, StatsGl } from "@react-three/drei"
-import { useCursor, MeshPortalMaterial, CameraControls, Text, Preload } from '@react-three/drei'
+import { useCursor, MeshPortalMaterial, CameraControls, Text, Preload, OrbitControls } from '@react-three/drei'
 import { useRoute, useLocation } from 'wouter'
 import { easing, geometry } from 'maath'
-import { suspend } from 'suspend-react'
-
 
 extend(geometry)
-
-// Preload fonts
-const regular = import('@pmndrs/assets/fonts/inter_regular.woff')
-const medium = import('@pmndrs/assets/fonts/inter_medium.woff')
 
 
 
 export const Home = () => (
 
-  <Canvas style={{ width: '100vw', height: '100vh' }} flat camera={{ fov: 140, position: [0, 0, 20] }} eventSource={document.getElementById('root')} eventPrefix="client">
-    <Sky />
-    <ambientLight intensity={Math.PI / 1.5} />
-    {/* Grid of frames */}
-    {['01', '02', '03', '04', '05', '06', '07', '08'].map((id, index) => (
-      <Frame
-        key={id}
-        id={id}
-        name={`Name ${id}`}
-        author="Omar Faruq Tawsif"
-        bg={index % 2 === 0 ? "#e4cdac" : "#d1d1ca"}
-        position={[(index % 4) * 3 - 4.5, Math.floor(index / 4) * -3, 0]} // Positioning in a 2x4 grid
-        width={2} height={1} // Adjust frame size
-      />
-    ))}
-    <StatsGl showPanel={0} className="my-stats" style={{ top: '10px', left: '10px' }} />
-    <Rig />
-    <Preload all />
-  </Canvas>
+  <Canvas  flat camera={{ fov: 75, position: [0, 0, 30] }} eventSource={document.getElementById('root')} eventPrefix="client">
+  <color attach="background" args={['#f0f0f0']} />
+  <Sky />
+  {['01', '02', '03', '04', '05', '06', '07', '08'].map((id, index) => (
+  <Frame
+    key={id}
+    id={id}
+    name={`Name ${id}`}
+    author="Omar Faruq Tawsif"
+    bg={"#e4cdac"}
+    position={[(index % 4) * 3 - 4.5, Math.floor(index / 4) * -3, 0]} // Positioning in a 2x4 grid
+    width={2} height={1} // Adjust frame size
+  />
+))}
+
+  <Rig />
+  <Preload all />
+</Canvas>
 
 )
 
@@ -50,13 +43,13 @@ const Frame = memo(({ id, name, author, bg, width = 1, height = 1.61803398875, c
   useFrame((state, dt) => easing.damp(portal.current, 'blend', params?.id === id ? 1 : 0, 0.2, dt))
   return (
     <group {...props}>
-      <Text font={suspend(medium).default} fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-0.375, 0.715, 0.01]} material-toneMapped={false}>
+      <Text  fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-0.375, 0.715, 0.01]} material-toneMapped={false}>
         {name}
       </Text>
-      <Text font={suspend(regular).default} fontSize={0.1} anchorX="right" position={[0.4, -0.659, 0.01]} material-toneMapped={false}>
+      <Text fontSize={0.1} anchorX="right" position={[0.4, -0.659, 0.01]} material-toneMapped={false}>
         /{id}
       </Text>
-      <Text font={suspend(regular).default} fontSize={0.04} anchorX="right" position={[0.0, -0.677, 0.01]} material-toneMapped={false}>
+      <Text  fontSize={0.04} anchorX="right" position={[0.0, -0.677, 0.01]} material-toneMapped={false}>
         {author}
       </Text>
       <mesh name={id} onDoubleClick={(e) => (e.stopPropagation(), setLocation('/item/' + e.object.name))} onPointerOver={(e) => hover(true)} onPointerOut={() => hover(false)}>
