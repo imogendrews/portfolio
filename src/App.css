@@ -2,8 +2,8 @@
 
 * {
   box-sizing: border-box;
-  /* width: 100%;
-  height: 100%; */
+  width: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
 }
@@ -49,6 +49,8 @@ svg {
 canvas {
   /* width: 100vw; /* Set canvas width to 100% of viewport width */
   /* height: 100vh; Set canvas height to 100% of viewport height */ 
+  width: 100%;
+  height: 100%;
   opacity: 0;
   touch-action: none;
   animation: fade-in 5s ease 1s forwards;
