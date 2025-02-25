@@ -56,3 +56,39 @@ canvas {
   touch-action: none;
   animation: fade-in 5s ease 1s forwards;
 }
+
+/* Ensure the button is small and positioned correctly */
+.btn {
+  background-color: transparent;
+  color: white;
+  border: none;
+  
+  font-size: 16px;
+
+  cursor: pointer;
+  display: flex;  /* Use flexbox to align items inside the button */
+  align-items: center;  /* Vertically center the icon and text */
+  justify-content: center;  /* Horizontally center the icon and text */
+  display: inline-block;  /* Ensures the button doesn't take up the full width */
+  position: absolute;
+  z-index: 1;  /* Keeps the button on top of other elements */
+}
+
+
+
+.btn i {
+
+  font-size: 12px;  /* Adjust the icon size */
+  margin: 0;  /* Remove default margin/padding from the icon */
+}
+
+
+
+/* Optional: If you want to make sure the button has proper width and height constraints */
+.btn {
+  min-width: 75px;
+  max-width: 100px;
+  min-height: 20px;
+  max-height: 40px;
+}
+

@@ -9,6 +9,9 @@ export const About = () => {
 
   return (
     <Canvas>
+        <Text fontSize={0.6} anchorY="top" anchorX="left" lineHeight={0.8} position={[-1, 3.25, 0]} material-toneMapped={false}>
+                About
+              </Text>
       <group>
   {/* Background Panel */}
   <mesh>

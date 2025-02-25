@@ -1,9 +1,10 @@
+// import { Link } from "react-router-dom";
 import { createRoot } from 'react-dom/client'
 import * as THREE from 'three'
 import React, { useRef, useState, memo, useEffect } from 'react'
 import { Canvas, useFrame, useThree, extend, useLoader } from '@react-three/fiber'
 import { useCursor, MeshPortalMaterial,  CameraControls, Text, Preload, OrbitControls, Image } from '@react-three/drei'
-import { useRoute, useLocation } from 'wouter'
+import { useRoute, useLocation, Link } from 'wouter'
 import { easing, geometry } from 'maath'
 import eye from '../assets/eye_pic.png'
 import zombie from '../assets/zombie.png'
@@ -62,6 +63,31 @@ const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
 
 
   export const Test = () => {
+    const [projects, setProjects] = useState([]);
+
+    useEffect(() => {
+      console.log("Fetching projects...");
+    
+      fetch("/.netlify/functions/projects")
+        .then((response) => {
+          console.log("Response Status:", response.status);
+          console.log("Response Headers:", response.headers);
+    
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+    
+          return response.json();
+        })
+        .then((data) => {
+          console.log("Fetched data:", data);
+          setProjects(data);
+        })
+        .catch((error) => console.error("Error fetching projects:", error));
+    }, []);
+    
+    
+    
     const [, setLocation] = useLocation(); // Get setLocation from useLocation
     return(
     <Canvas style={{ width: "100vw", height: "100vh" }} camera={{ fov: 75, position: [0, 0, 5] }}>
@@ -85,18 +111,22 @@ const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
         </Text>
       </group>
  
-      {["Circles", "Spirits", "Zombies", "Pattern", "Card", "Friends"].map((id, index) => (
-        <Frame
-          key={id}
-          id={id}
-          name={`Project: ${id}`}
-          image={id === "Circles" ? eye : id === "Spirits" ? spirit : id === "Zombies" ? zombie : id === "Pattern" ? pattern : id === "Card" ? clown : id === "Friends" ? friends : friends} // Ensure the image is passed correctly here
-          bg={"#e4cdac"}
-          position={[(index % 3) * 3 - 3.5, Math.floor(index / 3) * -3, 0]} // 2x4 grid positioning
-          width={2}
-          height={1}
-        />
-      ))}
+     
+        {projects.map((project, index) => (
+          <Link key={project.id} href={`/item/${project.id}`}>
+            <Frame
+              id={project.id}
+              name={`Project: ${project.name}`}
+              image={project.image}
+              bg={"#e4cdac"}
+              position={[(index % 3) * 3 - 3.5, Math.floor(index / 3) * -3, 0]}
+              width={2}
+              height={1}
+            />
+          </Link>
+        ))}
+   
+      
     </Canvas>
   )}
 
