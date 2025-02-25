@@ -74,26 +74,32 @@ const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
     return(
     <Canvas style={{ width: "100vw", height: "100vh" }} camera={{ fov: 75, position: [0, 0, 5] }}>
       <OrbitControls enableZoom={false} />
+      
       <Text fontSize={0.8} anchorY="top" anchorX="left" lineHeight={0.8} position={[-2.5, 3, 0]} material-toneMapped={false}>
           Imogen Drews
         </Text>
-       <group onClick={() => setLocation('/about')} cursor="pointer">
-        <Text fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-2.5, 2, 0]} material-toneMapped={false}>
-          About
-        </Text>
-      </group>
-      <group onClick={() => setLocation('/cv')} cursor="pointer">
-        <Text fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-0.5, 2, 0]} material-toneMapped={false}>
-          CV
-        </Text>
-      </group>
-      <group onClick={() => setLocation('/contact')} cursor="pointer">
-        <Text fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[1.5, 2, 0]} material-toneMapped={false}>
-          Contact
-        </Text>
-      </group>
- 
-     
+        <Link href="/about">
+  <group cursor="pointer">
+    <Text fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-2.5, 2, 0]} material-toneMapped={false}>
+      About
+    </Text>
+  </group>
+</Link>
+<Link href="/cv">
+  <group cursor="pointer">
+    <Text fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-0.5, 2, 0]} material-toneMapped={false}>
+      About
+    </Text>
+  </group>
+</Link>
+<Link href="/contact">
+  <group cursor="pointer">
+    <Text fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[1.5, 2, 0]} material-toneMapped={false}>
+      About
+    </Text>
+  </group>
+</Link>
+
         {/* {projects.map((project, index) => (
           <Link key={project.id} href={`/item/${project.id}`}>
             <Frame
