@@ -1,10 +1,9 @@
 
 import * as THREE from 'three'
 import React, {  useState, useEffect } from 'react'
-import { Canvas, useLoader } from '@react-three/fiber'
+import { Canvas, useLoader, extend } from '@react-three/fiber'
 import { Text, OrbitControls } from '@react-three/drei'
 import { useLocation, Link } from 'wouter'
-
 
 import { TextureLoader } from "three";
 
@@ -17,7 +16,7 @@ const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
   
     return (
       <mesh position={position}>
-        <roundedPlaneGeometry args={[width, height, 0.1]} />
+        <planeGeometry args={[width, height, 0.1]} />
         <meshBasicMaterial map={texture} side={THREE.DoubleSide} />
       </mesh>
     );
@@ -34,7 +33,7 @@ const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
           {name}
         </Text>
         <mesh>
-          <roundedPlaneGeometry args={[width, height, 0.1]} />
+          <planeGeometry args={[width, height, 0.1]} />
           <meshBasicMaterial color={bg} />
         </mesh>
         <RoundedImage url={image} position={[0, 0, 0.05]} width={width} height={height} />
@@ -47,28 +46,15 @@ const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
   export const HomePage = () => {
     const [projects, setProjects] = useState([]);
 
-    // useEffect(() => {
-    //   console.log("Fetching projects...");
+    useEffect(() => {
+      console.log('this runs')
+      fetch("/data/projects.json") // Adjust path based on where the JSON is stored
     
-    //   fetch("/.netlify/functions/projects")
-    //     .then((response) => {
-    //       console.log("Response Status:", response.status);
-    //       console.log("Response Headers:", response.headers);
+        .then((response) => response.json())
+        .then((data) => setProjects(data));
+    }, []);
     
-    //       if (!response.ok) {
-    //         throw new Error(`HTTP error! status: ${response.status}`);
-    //       }
-    
-    //       return response.json();
-    //     })
-    //     .then((data) => {
-    //       console.log("Fetched data:", data);
-    //       setProjects(data);
-    //     })
-    //     .catch((error) => console.error("Error fetching projects:", error));
-    // }, []);
-    
-    
+    console.log('what is projects', projects)
     
     const [, setLocation] = useLocation(); // Get setLocation from useLocation
     return(
@@ -97,7 +83,7 @@ const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
                 </Text>
             </group>
 
-        {/* {projects.map((project, index) => (
+        {projects.map((project, index) => (
           <Link key={project.id} href={`/item/${project.id}`}>
             <Frame
               id={project.id}
@@ -109,7 +95,7 @@ const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
               height={1}
             />
           </Link>
-        ))} */}
+        ))}
    
       
     </Canvas>

@@ -11,25 +11,25 @@ export const CV = () => {
   const { id } = useParams();
   const buttonRef = useRef(null);
 
-  const handleDownload = (e) => {
-    e.stopPropagation();
-    e.preventDefault();
-    // Create a link element
-    const link = document.createElement('a');
+  // const handleDownload = (e) => {
+  //   e.stopPropagation();
+  //   e.preventDefault();
+  //   // Create a link element
+  //   const link = document.createElement('a');
     
-    // Set the download attribute and href to the file you want to download
-    link.href = CV_pdf;  // Replace with the actual file URL or path
-    link.download = 'imogen_drews_cv.pdf';  // Specify the name of the file to be downloaded
+  //   // Set the download attribute and href to the file you want to download
+  //   link.href = CV_pdf;  // Replace with the actual file URL or path
+  //   link.download = 'imogen_drews_cv.pdf';  // Specify the name of the file to be downloaded
     
-    // Append the link to the document body (not visible)
-    document.body.appendChild(link);
+  //   // Append the link to the document body (not visible)
+  //   document.body.appendChild(link);
     
-    // Trigger the download by simulating a click on the link
-    link.click();
+  //   // Trigger the download by simulating a click on the link
+  //   link.click();
     
-    // Remove the link after the download
-    document.body.removeChild(link);
-  };
+  //   // Remove the link after the download
+  //   document.body.removeChild(link);
+  // };
 
   return (
     <div style={{ position: 'relative', width: '100vw', height: '100vh' }}>
@@ -39,15 +39,15 @@ export const CV = () => {
         
         {/* The button overlay */}
         <Html position={[3, -5, 0]} transform>
-          <button className="btn" onClick={handleDownload} ref={buttonRef} >
+          <button className="btn"  ref={buttonRef} >
             <i className="fa fa-download" title="Download"></i> Download
           </button>
         </Html>
         
         <group>
           <mesh>
-            <roundedPlaneGeometry args={[5, 5, 0.1]} />
-            <meshBasicMaterial />
+            {/* <roundedPlaneGeometry args={[5, 5, 0.1]} />
+            <meshBasicMaterial /> */}
           </mesh>
           {/* Replace RoundedImage with your actual component */}
           <RoundedImage url={CV_image} position={[0, 0, 0.05]} width={5} height={7} />
@@ -69,7 +69,7 @@ const RoundedImage = ({ url, position, width = 5, height = 7 }) => {
   
     return (
       <mesh position={position}>
-        <roundedPlaneGeometry args={[width, height, 0.1]} />
+        <planeGeometry args={[width, height, 0.1]} />
         <meshBasicMaterial map={texture} side={THREE.DoubleSide} />
       </mesh>
     );

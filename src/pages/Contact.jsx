@@ -2,7 +2,6 @@ import { useParams } from 'wouter';
 import profile_pic from '../assets/imo_profile.jpeg'
 import {  Text,  OrbitControls } from '@react-three/drei'
 import { Canvas, useFrame, useThree, extend, useLoader } from '@react-three/fiber'
-import { TextureLoader } from "three";
 import * as THREE from 'three'
 
 
@@ -17,7 +16,7 @@ export const Contact = () => {
       <group>
   {/* Background Panel */}
   <mesh position={[-0.5, 0 , 0]}>
-    <roundedPlaneGeometry args={[4, 2, 0.1]} />
+    <planeGeometry args={[4, 2, 0.1]} />
     <meshBasicMaterial />
   </mesh>
 

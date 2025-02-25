@@ -16,7 +16,7 @@ export const About = () => {
       <group>
   {/* Background Panel */}
   <mesh>
-    <roundedPlaneGeometry args={[5, 5, 0.1]} />
+    <planeGeometry args={[5, 5, 0.1]} />
     <meshBasicMaterial />
   </mesh>
 

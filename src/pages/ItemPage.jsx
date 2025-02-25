@@ -5,19 +5,17 @@ import {  Text  } from '@react-three/drei'
 export const ItemPage = () => {
   const [project, setProject] = useState(null);
   const [match, params] = useRoute("/item/:id");
-
-  useEffect(() => {
-    if (!params.id) return; // Don't fetch if ID is missing
   
-    fetch("/.netlify/functions/projects")
-      .then((response) => response.json())
-      .then((data) => {
-        const selectedProject = data.find((p) => p.id === Number(params.id));
-        setProject(selectedProject || null); // Handle case where no match is found
-      })
-      .catch((error) => console.error("Error fetching project:", error));
-  }, [params.id]);
-  
+      useEffect(() => {
+        if (!params.id) return; // Don't fetch if ID is missing
+        fetch("/data/projects.json") // Adjust path based on where the JSON is stored
+          .then((response) => response.json())
+          .then((data) => {
+            const selectedProject = data.find((p) => p.id === Number(params.id));
+            setProject(selectedProject || null)});
+            
+      }, [params.id]);
+      
 
   if (!project) return <p>Loading...</p>;
 
