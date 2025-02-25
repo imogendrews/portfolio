@@ -4,6 +4,11 @@ import {  Text,  OrbitControls } from '@react-three/drei'
 import { Canvas, useFrame, useThree, extend, useLoader } from '@react-three/fiber'
 import { TextureLoader } from "three";
 import * as THREE from 'three'
+import { RoundedPlaneGeometry } from '@react-three/drei'
+import { extend } from '@react-three/fiber'
+
+extend({ RoundedPlaneGeometry })
+
 export const Contact = () => {
   const { id } = useParams();
 
@@ -33,18 +38,7 @@ export const Contact = () => {
   >
 Email: imoleadrews@gmail.com
   </Text>
-  {/* <Text 
-    color="black" 
-    fontSize={0.2} 
-    anchorY="top" 
-    anchorX="left"
-    position={[-2.25, 1.5, 0.01]} // Align with image
-    maxWidth={4} 
-    textAlign="left"
-  >
-LinkedIn: https://www.linkedin.com/in/imogen-drews/
-  </Text> */}
-  {/* Remaining text below both image and first line */}
+  
   <Text 
     color="black" 
     fontSize={0.2} 
