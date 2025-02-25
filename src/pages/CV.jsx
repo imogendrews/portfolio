@@ -6,10 +6,7 @@ import {  Text,  OrbitControls, Html } from '@react-three/drei'
 import { Canvas, useFrame, useThree, extend, useLoader } from '@react-three/fiber'
 import { TextureLoader } from "three";
 import * as THREE from 'three'
-import { RoundedPlaneGeometry } from '@react-three/drei'
-import { extend } from '@react-three/fiber'
 
-extend({ RoundedPlaneGeometry })
 export const CV = () => {
   const { id } = useParams();
   const buttonRef = useRef(null);
