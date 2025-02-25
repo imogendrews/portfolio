@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRoute } from "wouter";
-import { Canvas, useFrame, useThree, extend, useLoader } from '@react-three/fiber'
-import {  Text,  OrbitControls, Html } from '@react-three/drei'
+import { Canvas } from '@react-three/fiber'
+import {  Text  } from '@react-three/drei'
 export const ItemPage = () => {
   const [project, setProject] = useState(null);
   const [match, params] = useRoute("/item/:id");

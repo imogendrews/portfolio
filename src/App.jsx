@@ -1,21 +1,18 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import * as THREE from 'three'
 import { Route, Switch } from 'wouter';
-import { Home } from './pages/Home';
+import { HomePage } from './pages/HomePage';
 import { ItemPage } from './pages/ItemPage';
-import { Test } from './pages/Test';
 import { About } from './pages/About'
 import { CV } from './pages/CV'
 import { Contact } from './pages/Contact'
 import './App.css'; 
-import { Canvas, useFrame, useThree, extend, useLoader } from '@react-three/fiber'
-import { Clouds, Cloud, Sky as SkyImpl, StatsGl } from "@react-three/drei"
-import { useCursor, MeshPortalMaterial,  CameraControls, Text, Preload, OrbitControls, Image } from '@react-three/drei'
+import { Canvas, useFrame } from '@react-three/fiber'
+import { Clouds, Cloud, Sky as SkyImpl } from "@react-three/drei"
+import { OrbitControls } from '@react-three/drei'
 
 
 const App = () => {
-
-
   return (
     <>
 <Canvas>
@@ -29,7 +26,7 @@ const App = () => {
 
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
         <Switch>
-          <Route path="/" component={Test} />
+          <Route path="/" component={HomePage} />
           <Route path="/about" component={About} />
           <Route path="/cv" component={CV} />
           <Route path="/contact" component={Contact} />

@@ -1,27 +1,12 @@
-// import { Link } from "react-router-dom";
-import { createRoot } from 'react-dom/client'
+
 import * as THREE from 'three'
-import React, { useRef, useState, memo, useEffect } from 'react'
-import { Canvas, useFrame, useThree, extend, useLoader } from '@react-three/fiber'
-import { useCursor, MeshPortalMaterial,  CameraControls, Text, Preload, OrbitControls, Image } from '@react-three/drei'
-import { useRoute, useLocation, Link } from 'wouter'
-import { easing, geometry } from 'maath'
-import eye from '../assets/eye_pic.png'
-import zombie from '../assets/zombie.png'
-import spirit from '../assets/spirit.png'
-import pattern from '../assets/pattern_image.png'
-import clown from '../assets/clown_image.png'
-import friends from '../assets/friends_image.png'
-import { Html} from "@react-three/drei";
+import React, {  useState, useEffect } from 'react'
+import { Canvas, useLoader } from '@react-three/fiber'
+import { Text, OrbitControls } from '@react-three/drei'
+import { useLocation, Link } from 'wouter'
+
+
 import { TextureLoader } from "three";
-
-
-// useEffect(() => {
-//   const preventScroll = (e) => e.preventDefault();
-//   window.addEventListener("wheel", preventScroll, { passive: false });
-
-//   return () => window.removeEventListener("wheel", preventScroll);
-// }, []);
 
 const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
     const texture = useLoader(TextureLoader, url);
@@ -38,8 +23,7 @@ const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
     );
   };
   
-  
-  
+
 
   const Frame = ({ id, name, bg, image, position, width = 1, height = 1 }) => {
     const [, setLocation] = useLocation(); // Correct way to navigate in wouter
@@ -58,33 +42,31 @@ const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
     );
   };
   
-  
 
 
-
-  export const Test = () => {
+  export const HomePage = () => {
     const [projects, setProjects] = useState([]);
 
-    useEffect(() => {
-      console.log("Fetching projects...");
+    // useEffect(() => {
+    //   console.log("Fetching projects...");
     
-      fetch("/.netlify/functions/projects")
-        .then((response) => {
-          console.log("Response Status:", response.status);
-          console.log("Response Headers:", response.headers);
+    //   fetch("/.netlify/functions/projects")
+    //     .then((response) => {
+    //       console.log("Response Status:", response.status);
+    //       console.log("Response Headers:", response.headers);
     
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
+    //       if (!response.ok) {
+    //         throw new Error(`HTTP error! status: ${response.status}`);
+    //       }
     
-          return response.json();
-        })
-        .then((data) => {
-          console.log("Fetched data:", data);
-          setProjects(data);
-        })
-        .catch((error) => console.error("Error fetching projects:", error));
-    }, []);
+    //       return response.json();
+    //     })
+    //     .then((data) => {
+    //       console.log("Fetched data:", data);
+    //       setProjects(data);
+    //     })
+    //     .catch((error) => console.error("Error fetching projects:", error));
+    // }, []);
     
     
     
@@ -112,7 +94,7 @@ const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
       </group>
  
      
-        {projects.map((project, index) => (
+        {/* {projects.map((project, index) => (
           <Link key={project.id} href={`/item/${project.id}`}>
             <Frame
               id={project.id}
@@ -124,7 +106,7 @@ const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
               height={1}
             />
           </Link>
-        ))}
+        ))} */}
    
       
     </Canvas>
