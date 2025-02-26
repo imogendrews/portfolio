@@ -67,7 +67,7 @@ const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
   
     return (
       <mesh position={position}>
-        <roundedPlaneGeometry args={[width, height, 0.1]} />
+        <planeGeometry args={[width, height, 0.1]} />
         <meshBasicMaterial map={texture} side={THREE.DoubleSide} />
       </mesh>
     );

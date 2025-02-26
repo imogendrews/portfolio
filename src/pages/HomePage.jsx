@@ -24,9 +24,7 @@ const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
   
 
 
-  const Frame = ({ id, name, bg, image, position, width = 1, height = 1 }) => {
-    const [, setLocation] = useLocation(); // Correct way to navigate in wouter
-  
+  const Frame = ({ id, name, bg, image, position, width = 1, height = 1, setLocation }) => {
     return (
       <group position={position} onClick={() => setLocation(`/item/${id}`)} cursor="pointer">
         <Text fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-0.975, 0.815, 0.01]} material-toneMapped={false}>
@@ -41,13 +39,14 @@ const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
     );
   };
   
+  
 
 
   export const HomePage = () => {
     const [projects, setProjects] = useState([]);
 
     useEffect(() => {
-      console.log('this runs')
+  
       fetch("/data/projects.json") // Adjust path based on where the JSON is stored
     
         .then((response) => response.json())
@@ -83,19 +82,19 @@ const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
                 </Text>
             </group>
 
-        {projects.map((project, index) => (
-          <Link key={project.id} href={`/item/${project.id}`}>
-            <Frame
-              id={project.id}
-              name={`Project: ${project.name}`}
-              image={project.image}
-              bg={"#e4cdac"}
-              position={[(index % 3) * 3 - 3.5, Math.floor(index / 3) * -3, 0]}
-              width={2}
-              height={1}
-            />
-          </Link>
-        ))}
+            {projects.map((project, index) => (
+  <Frame
+    key={project.id}
+    id={project.id}
+    name={`Project: ${project.name}`}
+    image={project.image}
+    bg={"#e4cdac"}
+    position={[(index % 3) * 3 - 3.5, Math.floor(index / 3) * -3, 0]}
+    width={2}
+    height={1}
+    setLocation={setLocation} // Pass the navigation function
+  />
+))}
    
       
     </Canvas>
