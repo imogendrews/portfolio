@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRoute } from "wouter";
 import { Canvas } from '@react-three/fiber'
-import {  Text  } from '@react-three/drei'
+import {  Text, Image  } from '@react-three/drei'
 export const ItemPage = () => {
   const [project, setProject] = useState(null);
   const [match, params] = useRoute("/item/:id");
@@ -21,9 +21,9 @@ export const ItemPage = () => {
 
   return (
     <Canvas>
-      <Text>{project.name}</Text>
-      {/* <img src={project.image} alt={project.name} style={{ width: "400px" }} /> */}
-      <Text>{project.description}</Text>
+      <Text fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-0.975, 0.815, 0.01]} material-toneMapped={false}>{project.name}</Text>
+      <Image url={project.image} position={[0, 0, 0.05]} width={2} height={1} />
+      <Text fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-0.975, 0.400, 0.01]} material-toneMapped={false}>{project.description}</Text>
       {/* <a href={project.github} target="_blank" rel="noopener noreferrer">
         GitHub Repo
       </a> */}

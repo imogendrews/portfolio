@@ -2,37 +2,45 @@
 import * as THREE from 'three'
 import React, {  useState, useEffect } from 'react'
 import { Canvas, useLoader, extend } from '@react-three/fiber'
-import { Text, OrbitControls } from '@react-three/drei'
+import { useCursor, MeshPortalMaterial,  CameraControls, Text, Preload, OrbitControls, Image } from '@react-three/drei'
 import { useLocation, Link } from 'wouter'
+import eye from '../assets/eye_pic.png'
+import { geometry } from 'maath'
 
+extend(geometry)
+
+
+import { Html} from "@react-three/drei";
 import { TextureLoader } from "three";
 
+import { RoundedBox } from '@react-three/drei'; // You can use this for rounded shapes
+
 const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
-    const texture = useLoader(TextureLoader, url);
-  
-    if (!texture) {
-      return <mesh position={position}><boxGeometry args={[1, 1, 1]} /><meshBasicMaterial color="gray" /></mesh>;
-    }
-  
-    return (
-      <mesh position={position}>
-        <planeGeometry args={[width, height, 0.1]} />
-        <meshBasicMaterial map={texture} side={THREE.DoubleSide} />
-      </mesh>
-    );
-  };
+  const texture = useLoader(TextureLoader, url);
+
+  if (!texture) {
+    return <mesh position={position}><boxGeometry args={[1, 1, 1]} /><meshBasicMaterial color="gray" /></mesh>;
+  }
+
+  return (
+    <mesh position={position}>
+      <roundedPlaneGeometry args={[width, height, 0.1]} />
+      <meshBasicMaterial map={texture} side={THREE.DoubleSide} />
+    </mesh>
+  );
+};
   
 
 
-  const Frame = ({ id, name, bg, image, position, width = 1, height = 1, setLocation }) => {
+  const Frame = ({ id, name, bg, image, position, width = 2, height = 1, setLocation }) => {
     return (
       <group position={position} onClick={() => setLocation(`/item/${id}`)} cursor="pointer">
         <Text fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-0.975, 0.815, 0.01]} material-toneMapped={false}>
           {name}
         </Text>
         <mesh>
-          <planeGeometry args={[width, height, 0.1]} />
-          <meshBasicMaterial color={bg} />
+          <roundedPlaneGeometry  args={[width, height, 0.1]} />
+          <meshStandardMaterial color={bg} />
         </mesh>
         <RoundedImage url={image} position={[0, 0, 0.05]} width={width} height={height} />
       </group>
@@ -86,7 +94,7 @@ const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
   <Frame
     key={project.id}
     id={project.id}
-    name={`Project: ${project.name}`}
+    name={project.name}
     image={project.image}
     bg={"#e4cdac"}
     position={[(index % 3) * 3 - 3.5, Math.floor(index / 3) * -3, 0]}

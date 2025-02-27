@@ -6,6 +6,9 @@ import {  Text,  OrbitControls, Html } from '@react-three/drei'
 import { Canvas, useFrame, useThree, extend, useLoader } from '@react-three/fiber'
 import { TextureLoader } from "three";
 import * as THREE from 'three'
+import { geometry } from 'maath'
+
+extend(geometry)
 
 export const CV = () => {
   const { id } = useParams();
@@ -46,8 +49,8 @@ export const CV = () => {
         
         <group>
           <mesh>
-            {/* <roundedPlaneGeometry args={[5, 5, 0.1]} />
-            <meshBasicMaterial /> */}
+            <roundedPlaneGeometry args={[5, 5, 0.1]} />
+            <meshBasicMaterial />
           </mesh>
           {/* Replace RoundedImage with your actual component */}
           <RoundedImage url={CV_image} position={[0, 0, 0.05]} width={5} height={7} />
@@ -69,7 +72,7 @@ const RoundedImage = ({ url, position, width = 5, height = 7 }) => {
   
     return (
       <mesh position={position}>
-        <planeGeometry args={[width, height, 0.1]} />
+        <roundedPlaneGeometry args={[width, height, 0.1]} />
         <meshBasicMaterial map={texture} side={THREE.DoubleSide} />
       </mesh>
     );

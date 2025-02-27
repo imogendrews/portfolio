@@ -4,6 +4,9 @@ import {  Text,  OrbitControls } from '@react-three/drei'
 import { Canvas, useFrame, useThree, extend, useLoader } from '@react-three/fiber'
 import { TextureLoader } from "three";
 import * as THREE from 'three'
+import { geometry } from 'maath'
+
+extend(geometry)
 
 export const About = () => {
   const { id } = useParams();
@@ -16,7 +19,7 @@ export const About = () => {
       <group>
   {/* Background Panel */}
   <mesh>
-    <planeGeometry args={[5, 5, 0.1]} />
+    <roundedPlaneGeometry args={[5, 5, 0.1]} />
     <meshBasicMaterial />
   </mesh>
 
@@ -67,7 +70,7 @@ const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
   
     return (
       <mesh position={position}>
-        <planeGeometry args={[width, height, 0.1]} />
+        <roundedPlaneGeometry args={[width, height, 0.1]} />
         <meshBasicMaterial map={texture} side={THREE.DoubleSide} />
       </mesh>
     );

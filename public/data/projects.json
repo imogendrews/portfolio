@@ -2,42 +2,42 @@
     {
       "id": 1,
       "name": "Circles",
-      "image": "assets/eye_pic.png",
+      "image": "/assets/eye_pic.png",
       "description": "A personal portfolio website built with React and Tailwind CSS.",
       "github": "https://github.com/yourusername/portfolio"
     },
     {
       "id": 2,
-      "name": "Chat App",
-      "image": "assets/eye_pic.png",
+      "name": "Pattern",
+      "image": "/assets/pattern_image.png",
       "description": "A real-time chat app using Socket.io and Node.js.",
       "github": "https://github.com/yourusername/chat-app"
     },
     {
       "id": 3,
-      "name": "E-commerce Store",
-      "image": "assets/eye_pic.png",
+      "name": "Friends",
+      "image": "/assets/friends_image.png",
       "description": "An e-commerce site built with Next.js and Stripe for payments.",
       "github": "https://github.com/yourusername/ecommerce-store"
     },
     {
       "id": 4,
-      "name": "Portfolio Website",
-      "image": "assets/eye_pic.png",
+      "name": "Spirit",
+      "image": "/assets/spirit.png",
       "description": "A personal portfolio website built with React and Tailwind CSS.",
       "github": "https://github.com/yourusername/portfolio"
     },
     {
       "id": 5,
-      "name": "Chat App",
-      "image": "assets/eye_pic.png",
+      "name": "Clown",
+      "image": "/assets/clown_image.png",
       "description": "A real-time chat app using Socket.io and Node.js.",
       "github": "https://github.com/yourusername/chat-app"
     },
     {
       "id": 6,
-      "name": "E-commerce Store",
-      "image": "assets/eye_pic.png",
+      "name": "Zombie",
+      "image": "/assets/zombie.png",
       "description": "An e-commerce site built with Next.js and Stripe for payments.",
       "github": "https://github.com/yourusername/ecommerce-store"
     }
