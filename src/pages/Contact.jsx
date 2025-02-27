@@ -21,7 +21,7 @@ export const Contact = () => {
   {/* Background Panel */}
   <mesh position={[-0.5, 0 , 0]}>
     <roundedPlaneGeometry args={[4, 2, 0.1]} />
-    <meshBasicMaterial color="#a0b0d0" />
+    <meshBasicMaterial color="#a0b0d0" transparent={true} opacity={0.8}  />
   </mesh>
 
   

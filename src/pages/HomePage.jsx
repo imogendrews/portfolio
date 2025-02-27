@@ -35,7 +35,7 @@ const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
   const Frame = ({ id, name, bg, image, position, width = 2, height = 1, setLocation }) => {
     return (
       <group position={position} onClick={() => setLocation(`/item/${id}`)} cursor="pointer">
-        <Text font="/fonts/RobotoCondensed.ttf" fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-0.5, 0.815, 0.01]} material-toneMapped={false}>
+        <Text color="#F6F4F2" font="/fonts/RobotoCondensed.ttf" fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-0.5, 0.815, 0.01]} material-toneMapped={false}>
           {name}
         </Text>
         <mesh>
@@ -68,24 +68,24 @@ const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
     <Canvas style={{ width: "100vw", height: "100vh" }} camera={{ fov: 75, position: [0, 0, 5] }}>
       <OrbitControls enableZoom={false} />
       
-      <Text font="/fonts/BebasNeue-Regular.ttf" fontSize={0.8} anchorY="top" anchorX="left" lineHeight={0.8} position={[-2.5, 3, 0]} material-toneMapped={false}>
+      <Text color="#F6F4F2" font="/fonts/BebasNeue-Regular.ttf" fontSize={0.8} anchorY="top" anchorX="left" lineHeight={0.8} position={[-2.5, 3, 0]} material-toneMapped={false}>
           Imogen Drews
         </Text>
            {/* Navigation links */}
            <group onClick={() => setLocation('/about')} cursor="pointer">
-                <Text font="/fonts/RobotoCondensed.ttf" fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-2.5, 2, 0]} material-toneMapped={false}>
+                <Text color="#F6F4F2" font="/fonts/RobotoCondensed.ttf" fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-2.5, 2, 0]} material-toneMapped={false}>
                     About
                 </Text>
             </group>
 
             <group onClick={() => setLocation('/cv')} cursor="pointer">
-                <Text font="/fonts/RobotoCondensed.ttf" fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-0.5, 2, 0]} material-toneMapped={false}>
+                <Text color="#F6F4F2" font="/fonts/RobotoCondensed.ttf" fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-0.5, 2, 0]} material-toneMapped={false}>
                     CV
                 </Text>
             </group>
 
             <group onClick={() => setLocation('/contact')} cursor="pointer">
-                <Text font="/fonts/RobotoCondensed.ttf" fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[1.5, 2, 0]} material-toneMapped={false}>
+                <Text color="#F6F4F2" font="/fonts/RobotoCondensed.ttf" fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[1.5, 2, 0]} material-toneMapped={false}>
                     Contact
                 </Text>
             </group>

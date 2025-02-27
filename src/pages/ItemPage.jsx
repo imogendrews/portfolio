@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRoute } from "wouter";
 import { Canvas, extend, useLoader } from '@react-three/fiber'
-import {  Text, Image  } from '@react-three/drei'
+import {  Text, Image, OrbitControls  } from '@react-three/drei'
 import { geometry } from 'maath'
 import { TextureLoader } from "three";
 import * as THREE from 'three'
@@ -30,11 +30,12 @@ export const ItemPage = () => {
 
   return (
     <Canvas>
+       <OrbitControls enableZoom={false} />
       <group>
           {/* Background Panel */}
   <mesh>
     <roundedPlaneGeometry args={[7, 5.5, 0.1]} />
-    <meshBasicMaterial color="#a0b0d0" />
+    <meshBasicMaterial color="#a0b0d0" transparent={true} opacity={0.8}  />
   </mesh>
      
       <Text font="/fonts/BebasNeue-Regular.ttf" fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-0.5, 2, 0.01]} material-toneMapped={false}>{project.name}</Text>

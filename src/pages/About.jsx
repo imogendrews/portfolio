@@ -21,7 +21,7 @@ export const About = () => {
   {/* Background Panel */}
   <mesh>
     <roundedPlaneGeometry args={[5, 5, 0.1]} />
-    <meshBasicMaterial color="#a0b0d0" />
+    <meshBasicMaterial color="#a0b0d0" transparent={true} opacity={0.8}  />
   </mesh>
 
   {/* Profile Image at Top Left */}
