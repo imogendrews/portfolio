@@ -13,21 +13,23 @@ export const Contact = () => {
 
   return (
     <Canvas>
-       <Text fontSize={0.6} anchorY="top" anchorX="left" lineHeight={0.8} position={[-1.5, 2, 0]} material-toneMapped={false}>
+      <OrbitControls enableZoom={false} />
+       <Text font="/fonts/BebasNeue-Regular.ttf" fontSize={0.6} anchorY="top" anchorX="left" lineHeight={0.8} position={[-1.5, 2, 0]} material-toneMapped={false}>
                 Contact
               </Text>
       <group>
   {/* Background Panel */}
   <mesh position={[-0.5, 0 , 0]}>
     <roundedPlaneGeometry args={[4, 2, 0.1]} />
-    <meshBasicMaterial />
+    <meshBasicMaterial color="#a0b0d0" />
   </mesh>
 
   
 
   {/* First line of text next to the image */}
   <Text 
-    color="black" 
+  font="/fonts/RobotoCondensed.ttf"
+    color="#1a1e1c" 
     fontSize={0.2} 
     anchorY="top" 
     anchorX="left"
@@ -39,7 +41,8 @@ Email: imoleadrews@gmail.com
   </Text>
   
   <Text 
-    color="black" 
+  font="/fonts/RobotoCondensed.ttf"
+    color="#1a1e1c" 
     fontSize={0.2} 
     anchorY="top" 
     anchorX="left"

@@ -13,14 +13,15 @@ export const About = () => {
 
   return (
     <Canvas>
-        <Text fontSize={0.6} anchorY="top" anchorX="left" lineHeight={0.8} position={[-1, 3.25, 0]} material-toneMapped={false}>
+      <OrbitControls enableZoom={false} />
+        <Text font="/fonts/BebasNeue-Regular.ttf" fontSize={0.6} anchorY="top" anchorX="left" lineHeight={0.8} position={[-1, 3.25, 0]} material-toneMapped={false}>
                 About
               </Text>
       <group>
   {/* Background Panel */}
   <mesh>
     <roundedPlaneGeometry args={[5, 5, 0.1]} />
-    <meshBasicMaterial />
+    <meshBasicMaterial color="#a0b0d0" />
   </mesh>
 
   {/* Profile Image at Top Left */}
@@ -28,7 +29,8 @@ export const About = () => {
 
   {/* First line of text next to the image */}
   <Text 
-    color="black" 
+  font="/fonts/RobotoCondensed.ttf"
+    color="#1a1e1c" 
     fontSize={0.2} 
     anchorY="top" 
     anchorX="left"
@@ -41,7 +43,8 @@ export const About = () => {
 
   {/* Remaining text below both image and first line */}
   <Text 
-    color="black" 
+  font="/fonts/RobotoCondensed.ttf"
+    color="#1a1e1c" 
     fontSize={0.2} 
     anchorY="top" 
     anchorX="left"

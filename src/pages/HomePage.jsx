@@ -35,7 +35,7 @@ const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
   const Frame = ({ id, name, bg, image, position, width = 2, height = 1, setLocation }) => {
     return (
       <group position={position} onClick={() => setLocation(`/item/${id}`)} cursor="pointer">
-        <Text fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-0.975, 0.815, 0.01]} material-toneMapped={false}>
+        <Text font="/fonts/RobotoCondensed.ttf" fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-0.5, 0.815, 0.01]} material-toneMapped={false}>
           {name}
         </Text>
         <mesh>
@@ -68,24 +68,24 @@ const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
     <Canvas style={{ width: "100vw", height: "100vh" }} camera={{ fov: 75, position: [0, 0, 5] }}>
       <OrbitControls enableZoom={false} />
       
-      <Text fontSize={0.8} anchorY="top" anchorX="left" lineHeight={0.8} position={[-2.5, 3, 0]} material-toneMapped={false}>
+      <Text font="/fonts/BebasNeue-Regular.ttf" fontSize={0.8} anchorY="top" anchorX="left" lineHeight={0.8} position={[-2.5, 3, 0]} material-toneMapped={false}>
           Imogen Drews
         </Text>
            {/* Navigation links */}
            <group onClick={() => setLocation('/about')} cursor="pointer">
-                <Text fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-2.5, 2, 0]} material-toneMapped={false}>
+                <Text font="/fonts/RobotoCondensed.ttf" fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-2.5, 2, 0]} material-toneMapped={false}>
                     About
                 </Text>
             </group>
 
             <group onClick={() => setLocation('/cv')} cursor="pointer">
-                <Text fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-0.5, 2, 0]} material-toneMapped={false}>
+                <Text font="/fonts/RobotoCondensed.ttf" fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-0.5, 2, 0]} material-toneMapped={false}>
                     CV
                 </Text>
             </group>
 
             <group onClick={() => setLocation('/contact')} cursor="pointer">
-                <Text fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[1.5, 2, 0]} material-toneMapped={false}>
+                <Text font="/fonts/RobotoCondensed.ttf" fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[1.5, 2, 0]} material-toneMapped={false}>
                     Contact
                 </Text>
             </group>
@@ -97,7 +97,7 @@ const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
     name={project.name}
     image={project.image}
     bg={"#e4cdac"}
-    position={[(index % 3) * 3 - 3.5, Math.floor(index / 3) * -3, 0]}
+    position={[(index % 3) * 3 - 3.5, Math.floor(index / 3) * -2, 0]}
     width={2}
     height={1}
     setLocation={setLocation} // Pass the navigation function
