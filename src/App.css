@@ -50,14 +50,12 @@ svg {
 canvas {
   width: 100vw;
   height: 100vh; 
-  /* width: 100%;
-  height: 100%; */
   opacity: 0;
   touch-action: none;
   animation: fade-in 5s ease 1s forwards;
 }
 
-/* Ensure the button is small and positioned correctly */
+
 .btn {
   background-color: transparent;
   color: white;
@@ -66,25 +64,23 @@ canvas {
   font-size: 16px;
 
   cursor: pointer;
-  display: flex;  /* Use flexbox to align items inside the button */
-  align-items: center;  /* Vertically center the icon and text */
-  justify-content: center;  /* Horizontally center the icon and text */
-  display: inline-block;  /* Ensures the button doesn't take up the full width */
+  display: flex;  
+  align-items: center;  
+  justify-content: center;  
+  display: inline-block;  
   position: absolute;
-  z-index: 1;  /* Keeps the button on top of other elements */
+  z-index: 1;  
 }
 
 
 
 .btn i {
 
-  font-size: 12px;  /* Adjust the icon size */
-  margin: 0;  /* Remove default margin/padding from the icon */
+  font-size: 12px;  
+  margin: 0; 
 }
 
 
-
-/* Optional: If you want to make sure the button has proper width and height constraints */
 .btn {
   min-width: 75px;
   max-width: 100px;

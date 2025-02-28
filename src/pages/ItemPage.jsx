@@ -14,7 +14,7 @@ export const ItemPage = () => {
   const [match, params] = useRoute("/item/:id");
   
   useEffect(() => {
-    if (!params || !params.id) return; // Ensure params exists before accessing id
+    if (!params || !params.id) return; 
     
     fetch("/data/projects.json")
       .then((response) => response.json())
@@ -23,7 +23,7 @@ export const ItemPage = () => {
         setProject(selectedProject || null);
       });
   
-  }, [params]); // No need for params.id, just params
+  }, [params]); 
   
 
   if (!project) return <p>Loading...</p>;
@@ -32,7 +32,6 @@ export const ItemPage = () => {
     <Canvas>
        <OrbitControls enableZoom={false} />
       <group>
-          {/* Background Panel */}
   <mesh>
     <roundedPlaneGeometry args={[7, 5.5, 0.1]} />
     <meshBasicMaterial color="#a0b0d0" transparent={true} opacity={0.8}  />

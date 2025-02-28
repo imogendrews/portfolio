@@ -2,18 +2,12 @@
 import * as THREE from 'three'
 import React, {  useState, useEffect } from 'react'
 import { Canvas, useLoader, extend } from '@react-three/fiber'
-import { useCursor, MeshPortalMaterial,  CameraControls, Text, Preload, OrbitControls, Image } from '@react-three/drei'
+import { Text, OrbitControls } from '@react-three/drei'
 import { useLocation, Link } from 'wouter'
-import eye from '../assets/eye_pic.png'
+import { TextureLoader } from "three";
 import { geometry } from 'maath'
 
 extend(geometry)
-
-
-import { Html} from "@react-three/drei";
-import { TextureLoader } from "three";
-
-import { RoundedBox } from '@react-three/drei'; // You can use this for rounded shapes
 
 const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
   const texture = useLoader(TextureLoader, url);
@@ -30,8 +24,6 @@ const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
   );
 };
   
-
-
   const Frame = ({ id, name, bg, image, position, width = 2, height = 1, setLocation }) => {
     return (
       <group position={position} onClick={() => setLocation(`/item/${id}`)} cursor="pointer">
@@ -47,15 +39,13 @@ const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
     );
   };
   
-  
-
 
   export const HomePage = () => {
     const [projects, setProjects] = useState([]);
 
     useEffect(() => {
   
-      fetch("/data/projects.json") // Adjust path based on where the JSON is stored
+      fetch("/data/projects.json") 
     
         .then((response) => response.json())
         .then((data) => setProjects(data));
@@ -63,7 +53,7 @@ const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
     
     console.log('what is projects', projects)
     
-    const [, setLocation] = useLocation(); // Get setLocation from useLocation
+    const [, setLocation] = useLocation(); 
     return(
     <Canvas style={{ width: "100vw", height: "100vh" }} camera={{ fov: 75, position: [0, 0, 5] }}>
       <OrbitControls enableZoom={false} />
@@ -100,11 +90,9 @@ const RoundedImage = ({ url, position, width = 1, height = 1 }) => {
     position={[(index % 3) * 3 - 3.5, Math.floor(index / 3) * -2, 0]}
     width={2}
     height={1}
-    setLocation={setLocation} // Pass the navigation function
+    setLocation={setLocation} 
   />
 ))}
-   
-      
     </Canvas>
   )}
 
