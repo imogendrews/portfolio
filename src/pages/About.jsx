@@ -1,7 +1,6 @@
-import { useParams } from 'wouter';
 import profile_pic from '../assets/imo_profile.jpeg'
 import {  Text,  OrbitControls } from '@react-three/drei'
-import { Canvas, useFrame, useThree, extend, useLoader } from '@react-three/fiber'
+import { Canvas, extend, useLoader } from '@react-three/fiber'
 import { TextureLoader } from "three";
 import * as THREE from 'three'
 import { geometry } from 'maath'
@@ -9,7 +8,6 @@ import { geometry } from 'maath'
 extend(geometry)
 
 export const About = () => {
-  const { id } = useParams();
 
   return (
     <Canvas>
@@ -18,37 +16,36 @@ export const About = () => {
                 About
               </Text>
       <group>
-  {/* Background Panel */}
+
   <mesh>
     <roundedPlaneGeometry args={[5, 5, 0.1]} />
     <meshBasicMaterial color="#a0b0d0" transparent={true} opacity={0.8}  />
   </mesh>
 
-  {/* Profile Image at Top Left */}
-  <RoundedImage url={profile_pic} position={[-1.25, 1.25, 0.05]} width={2} height={2} />
 
-  {/* First line of text next to the image */}
+  <RoundedImage url={profile_pic} position={[-0.3, 1.25, 0.05]} width={2} height={2} />
+
+
   <Text 
   font="/fonts/RobotoCondensed.ttf"
     color="#1a1e1c" 
     fontSize={0.2} 
     anchorY="top" 
     anchorX="left"
-    position={[-0.1, 2, 0.01]} // Align with image
-    maxWidth={2.5} 
+    position={[-2.25, 0, 0.01]} 
+    maxWidth={4.5} 
     textAlign="left"
   >
     I am a frontend developer currently pursuing a master's in Creative Technologies at the Film University Babelsberg Konrad Wolf. 
   </Text>
 
-  {/* Remaining text below both image and first line */}
   <Text 
   font="/fonts/RobotoCondensed.ttf"
     color="#1a1e1c" 
     fontSize={0.2} 
     anchorY="top" 
     anchorX="left"
-    position={[-2.25, 0.15, 0.01]} // Start below the image
+    position={[-2.25, -0.9, 0.01]} 
     maxWidth={4.5} 
     textAlign="left"
   >

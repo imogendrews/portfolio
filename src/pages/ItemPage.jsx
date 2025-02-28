@@ -38,14 +38,12 @@ export const ItemPage = () => {
     <meshBasicMaterial color="#a0b0d0" transparent={true} opacity={0.8}  />
   </mesh>
      
-      <Text font="/fonts/BebasNeue-Regular.ttf" fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-0.5, 2, 0.01]} material-toneMapped={false}>{project.name}</Text>
-      <RoundedImage url={project.image} position={[0, 1, 0.05]} width={2} height={1} />
-      <Text color="#1a1e1c"   font="/fonts/RobotoCondensed.ttf" fontSize={0.2} anchorY="top" anchorX="left"  position={[-3, 0.3, 0.01]} material-toneMapped={false}  maxWidth={6} >{project.description} </Text>
-      {/* <a href={project.github} target="_blank" rel="noopener noreferrer">
-        GitHub Repo
-      </a> */}
+      <Text font="/fonts/BebasNeue-Regular.ttf" fontSize={0.4} anchorY="top" anchorX="left" lineHeight={0.8} position={[-0.5, 2.3, 0.01]} material-toneMapped={false}>{project.name}</Text>
+      <RoundedImage url={project.image} position={[0, 0.7, 0.05]} width={3} height={2} />
+      <Text color="#1a1e1c"   font="/fonts/RobotoCondensed.ttf" fontSize={0.2} anchorY="top" anchorX="left"  position={[-3, -0.7, 0.01]} material-toneMapped={false}  maxWidth={6} >{project.description} </Text>
+ 
 
-      <Text color="#1a1e1c"  font="/fonts/BebasNeue-Regular.ttf" fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-0.5, -2.3, 0.01]} material-toneMapped={false} onClick={() => window.open(project.link, "_blank")}
+      <Text color="#1a1e1c"  font="/fonts/BebasNeue-Regular.ttf" fontSize={0.3} anchorY="top" anchorX="left" lineHeight={0.8} position={[-0.5, -2, 0.01]} material-toneMapped={false} onClick={() => window.open(project.link, "_blank")}
       onPointerOver={(e) => (e.object.material.color.set("lightblue"))}
       onPointerOut={(e) => (e.object.material.color.set("blue"))}
       cursor="pointer">Code</Text>
